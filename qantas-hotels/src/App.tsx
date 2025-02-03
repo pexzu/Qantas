@@ -1,5 +1,5 @@
 import React from "react";
-import { Hotels } from "./Hotels/Hotels";
+import { Hotels } from "./Main/Hotels/Hotels";
 
 function App() {
   return (

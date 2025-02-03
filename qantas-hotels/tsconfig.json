@@ -1,5 +1,5 @@
 {
-  "include": ["./global.d.ts", "./index.ts", "src/**/*"],
+  "include": ["./global.d.ts", "/src/index.ts", "src/**/*"],
   "compilerOptions": {
     "outDir": "build/dist",
     "module": "commonjs",
@@ -14,7 +14,8 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types", "src/types"]
   },
   "exclude": [
     "node_modules",
