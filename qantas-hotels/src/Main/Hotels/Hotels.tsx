@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import Logo from "../../Images/Pictures/qantas-logo.png";
 import { IHotels } from "../../types/interface";
 import { ImageBlock } from "../../Component/ImageBlock/ImageBlock";
-import { Rating } from "../../Component/Rating/Rating";
+import { Ratings as Rating } from "../../Component/Rating/Rating";
 import * as E from "./HotelsElement";
 
 export const Hotels = () => {
