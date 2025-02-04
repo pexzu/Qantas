@@ -1,3 +1,15 @@
+# To run this project quickly - run the following
+
+Move to the right folder - cd qantas-hotels
+
+install the npm packages -
+
+### `npm i`
+
+run the project -
+
+### `npm start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
