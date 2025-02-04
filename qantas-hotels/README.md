@@ -14,6 +14,14 @@ To run tests -
 
 ### `npm run test`
 
+# Comments:
+
+I have done this project using React, Typescript and styled components -
+
+Usage of typescript have helped me to track few bugs earlier, improve the readability and will be able to maintain the codebase more effectively.
+
+Styled components helped me to declutter components and in future if necessary I can move them to a component library and used across various applications. This enables less maintainance and avoid redundancy of codes.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
