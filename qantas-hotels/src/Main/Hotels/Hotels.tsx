@@ -4,10 +4,25 @@ import { IHotels } from "../../types/interface";
 import { ImageBlock } from "../../Component/ImageBlock/ImageBlock";
 import { Ratings as Rating } from "../../Component/Rating/Rating";
 import * as E from "./HotelsElement";
+import { HiSwitchVertical } from "react-icons/hi";
 
 export const Hotels = () => {
+  const [sortDesc, setSortDesc] = useState<boolean>(false);
+
   const data: IHotels = require("../../Data/hotels.json");
   const hotels = data.results;
+
+  const sortHotels = () => {
+    sortDesc
+      ? hotels.sort(
+          (a, b) => b.offer.displayPrice.amount - a.offer.displayPrice.amount
+        )
+      : hotels.sort(
+          (a, b) => a.offer.displayPrice.amount - b.offer.displayPrice.amount
+        );
+  };
+  sortHotels();
+
   const numOfHotels = hotels?.length;
   return (
     <div>
@@ -15,39 +30,72 @@ export const Hotels = () => {
       <E.LogoBlock src={Logo} />
       {/* count and sort */}
       <E.TabHead>
-        <div>{numOfHotels} hotels in Sydney</div>
-        <div>Sort by </div>
+        <div>
+          <b>{numOfHotels} </b>
+          <i>hotels in </i> <b>Sydney</b>
+        </div>
+        <E.SortBlock>
+          <div>Sort By</div>
+          <E.SortContainer>
+            {sortDesc ? (
+              <span> Price high-low</span>
+            ) : (
+              <span>Price low-high</span>
+            )}
+            <E.SortButton onClick={() => setSortDesc(!sortDesc)}>
+              <HiSwitchVertical size={15} />
+            </E.SortButton>
+          </E.SortContainer>
+        </E.SortBlock>
       </E.TabHead>
+      <E.Hr />
       {/* Table */}
       <div>
         {hotels.map((item) => (
-          <E.HotelsContainer>
-            <ImageBlock
-              srcUrl={item.property.previewImage.url}
-              promo={item.offer.promotion.title}
-            />
-            <E.HotelsContentSection>
+          <>
+            <E.HotelsContainer>
+              <ImageBlock
+                srcUrl={item.property.previewImage.url}
+                promo={item.offer.promotion.title}
+              />
+              <E.HotelsContentSection>
+                <div>
+                  <E.HotelsContentRatingSection>
+                    <E.HotelName> {item.property.title}</E.HotelName>
+                    <Rating
+                      ratingType={item.property.rating.ratingType}
+                      ratingValue={item.property.rating.ratingValue}
+                    />
+                  </E.HotelsContentRatingSection>
+                  <E.AddressBlock>
+                    {item.property.address.join(", ")}
+                  </E.AddressBlock>
+                </div>
+                <E.Link href="">{item.offer.name}</E.Link>
+                {item.offer.cancellationOption.cancellationType ==
+                "FREE_CANCELLATION" ? (
+                  <E.CancellationBlock>Free cancellation</E.CancellationBlock>
+                ) : (
+                  <div></div>
+                )}
+              </E.HotelsContentSection>
+
               <div>
-                <E.HotelsContentRatingSection>
-                  {item.property.title} <Rating />
-                </E.HotelsContentRatingSection>
-                <div>{item.property.address.join(", ")}</div>
+                <E.PricePer>1 night total (AUD)</E.PricePer>
+                <E.AmountContainer>
+                  <span>$</span>{" "}
+                  <E.Amount>{item.offer.displayPrice.amount}</E.Amount>
+                </E.AmountContainer>
+                {item.offer.savings?.amount && (
+                  <E.SavingSection>
+                    <div>Save {item.offer.savings?.amount}</div>
+                    <div>~</div>
+                  </E.SavingSection>
+                )}
               </div>
-              <a href="">{item.offer.name}</a>
-              {item.offer.cancellationOption.cancellationType ==
-              "FREE_CANCELLATION" ? (
-                <div>Free cancellation</div>
-              ) : (
-                <div></div>
-              )}
-            </E.HotelsContentSection>
-            <div>
-              <div>1 night total (AUD)</div>
-              <div>
-                <span>$</span> {item.offer.displayPrice.amount}
-              </div>
-            </div>
-          </E.HotelsContainer>
+            </E.HotelsContainer>
+            <E.Hr />
+          </>
         ))}
       </div>
     </div>

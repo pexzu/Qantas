@@ -3,7 +3,11 @@ import styled from "@emotion/styled";
 export const ImageBlockContainer = styled.div`
   label: ImageBlockContainer;
   position: relative;
-  height: 126px;
+  > img {
+    height: 130px;
+    width: 130px;
+    background: #f1f1f1;
+  }
 `;
 
 export const Promo = styled.div`

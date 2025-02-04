@@ -24,7 +24,7 @@ export interface IPreviewImage {
 
 export interface IRating {
   ratingValue: number;
-  ratingType: string;
+  ratingType: "star" | "self";
 }
 
 export interface IOffer {
