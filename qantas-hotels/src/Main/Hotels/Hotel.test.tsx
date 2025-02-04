@@ -18,7 +18,7 @@ describe("Hotels", () => {
 });
 
 describe("Hotels", () => {
-  it("renders Hotels component with right sorting as button clicks", async () => {
+  it("renders Hotels component with right sorting as button clicks and sorting function", async () => {
     render(<Hotels />);
     const sortButton = screen.getByRole("button");
     expect(sortButton).toBeInTheDocument();

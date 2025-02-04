@@ -8,6 +8,12 @@ describe("Rating", () => {
 });
 
 describe("Rating", () => {
+  it("renders Ratings component with 0 rating", () => {
+    render(<Ratings ratingType="star" ratingValue={0} />);
+  });
+});
+
+describe("Rating", () => {
   it("renders Ratings component with star rating", () => {
     render(<Ratings ratingType="star" ratingValue={2} />);
   });

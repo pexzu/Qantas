@@ -26,12 +26,11 @@ export const Hotels = () => {
   const numOfHotels = hotels?.length;
   return (
     <div>
-      {/* Nav */}
       <E.LogoBlock id="logo" alt="logo" src={Logo} />
-      {/* count and sort */}
       <E.TabHead>
         <div>
           <b>{numOfHotels} </b>
+          {/* With current data all hotels are from Sydney else would have checked for location */}
           <i>hotels in </i> <b>Sydney</b>
         </div>
         <E.SortBlock>
@@ -52,7 +51,6 @@ export const Hotels = () => {
         </E.SortBlock>
       </E.TabHead>
       <E.Hr />
-      {/* Table */}
       <div>
         {hotels.map((item) => (
           <div key={item.id}>
@@ -91,7 +89,7 @@ export const Hotels = () => {
                 </E.AmountContainer>
                 {item.offer.savings?.amount && (
                   <E.SavingSection>
-                    <div>Save {item.offer.savings?.amount}</div>
+                    <div>Save ${item.offer.savings?.amount}</div>
                     <div>~</div>
                   </E.SavingSection>
                 )}
@@ -104,5 +102,3 @@ export const Hotels = () => {
     </div>
   );
 };
-
-//hardcoding all hotels from Sydney - could do a check if the data was dynamic
