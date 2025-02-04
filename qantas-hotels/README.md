@@ -2,13 +2,17 @@
 
 Move to the right folder - cd qantas-hotels
 
-install the npm packages -
+Install the npm packages -
 
 ### `npm i`
 
-run the project -
+To run the project -
 
 ### `npm start`
+
+To run tests -
+
+### `npm run test`
 
 # Getting Started with Create React App
 
