@@ -9,7 +9,7 @@ interface IImageBlockProps {
 export const ImageBlock = ({ srcUrl, promo }: IImageBlockProps) => {
   return (
     <E.ImageBlockContainer>
-      <E.Promo>{promo}</E.Promo>
+      {promo && <E.Promo>{promo}</E.Promo>}
       <img src={srcUrl} />
     </E.ImageBlockContainer>
   );

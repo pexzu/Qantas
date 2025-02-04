@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import Logo from "../../Images/Pictures/qantas-logo.png";
 import { IHotels } from "../../types/interface";
 import { ImageBlock } from "../../Component/ImageBlock/ImageBlock";
-import { Ratings as Rating } from "../../Component/Rating/Rating";
+import { Ratings } from "../../Component/Ratings/Ratings";
 import * as E from "./HotelsElement";
 import { HiSwitchVertical } from "react-icons/hi";
 
@@ -27,7 +27,7 @@ export const Hotels = () => {
   return (
     <div>
       {/* Nav */}
-      <E.LogoBlock src={Logo} />
+      <E.LogoBlock id="logo" alt="logo" src={Logo} />
       {/* count and sort */}
       <E.TabHead>
         <div>
@@ -42,7 +42,10 @@ export const Hotels = () => {
             ) : (
               <span>Price low-high</span>
             )}
-            <E.SortButton onClick={() => setSortDesc(!sortDesc)}>
+            <E.SortButton
+              name="sortButton"
+              onClick={() => setSortDesc(!sortDesc)}
+            >
               <HiSwitchVertical size={15} />
             </E.SortButton>
           </E.SortContainer>
@@ -52,7 +55,7 @@ export const Hotels = () => {
       {/* Table */}
       <div>
         {hotels.map((item) => (
-          <>
+          <div key={item.id}>
             <E.HotelsContainer>
               <ImageBlock
                 srcUrl={item.property.previewImage.url}
@@ -62,7 +65,7 @@ export const Hotels = () => {
                 <div>
                   <E.HotelsContentRatingSection>
                     <E.HotelName> {item.property.title}</E.HotelName>
-                    <Rating
+                    <Ratings
                       ratingType={item.property.rating.ratingType}
                       ratingValue={item.property.rating.ratingValue}
                     />
@@ -95,7 +98,7 @@ export const Hotels = () => {
               </div>
             </E.HotelsContainer>
             <E.Hr />
-          </>
+          </div>
         ))}
       </div>
     </div>
